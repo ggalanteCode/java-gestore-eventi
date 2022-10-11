@@ -72,11 +72,15 @@ public class Evento {
 			this.numPostiPrenotati--;
 		}
 	}
+	
+	private String formattaData() {
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		return getData().format(dtf);
+	}
 
 	@Override
 	public String toString() {
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-		return "Titolo evento: " + getTitolo() + ", data: " + getData().format(dtf);
+		return "Titolo evento: " + getTitolo() + ", data: " + formattaData();
 	}
 
 	
