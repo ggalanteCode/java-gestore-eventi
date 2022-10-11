@@ -1,6 +1,7 @@
 package com.soprasteria.javagestoreeventi.evento;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import com.soprasteria.javagestoreeventi.exceptions.DataPassataException;
 import com.soprasteria.javagestoreeventi.exceptions.NumeroPostiException;
@@ -71,5 +72,13 @@ public class Evento {
 			this.numPostiPrenotati--;
 		}
 	}
+
+	@Override
+	public String toString() {
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		return "Titolo evento: " + getTitolo() + ", data: " + getData().format(dtf);
+	}
+
+	
 	
 }
