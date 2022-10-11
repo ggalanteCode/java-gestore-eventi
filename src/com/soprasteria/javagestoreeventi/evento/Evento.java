@@ -3,7 +3,7 @@ package com.soprasteria.javagestoreeventi.evento;
 import java.time.LocalDate;
 
 import com.soprasteria.javagestoreeventi.exceptions.DataPassataException;
-import com.soprasteria.javagestoreeventi.exceptions.NumeroPostiNegativoException;
+import com.soprasteria.javagestoreeventi.exceptions.NumeroPostiException;
 
 public class Evento {
 	
@@ -12,7 +12,7 @@ public class Evento {
 	private int numPostiTotale;
 	private int numPostiPrenotati;
 	
-	public Evento(String titolo, LocalDate data, int numPostiTotale) throws DataPassataException, NumeroPostiNegativoException {
+	public Evento(String titolo, LocalDate data, int numPostiTotale) throws DataPassataException, NumeroPostiException {
 		super();
 		this.titolo = titolo;
 		if(data.isBefore(LocalDate.now())) {
@@ -21,7 +21,7 @@ public class Evento {
 			this.data = data;
 		}
 		if(numPostiTotale < 0) {
-			throw new NumeroPostiNegativoException("Il numero di posti totali è negativo!");
+			throw new NumeroPostiException("Il numero di posti totali è negativo!");
 		} else {
 			this.numPostiTotale = numPostiTotale;
 		}
@@ -50,6 +50,26 @@ public class Evento {
 
 	public int getNumPostiPrenotati() {
 		return numPostiPrenotati;
+	}
+	
+	public void prenota() throws DataPassataException, NumeroPostiException {
+		if(this.data.isBefore(LocalDate.now())) {
+			throw new DataPassataException("l'evento è già passato!");
+		} else if(this.numPostiTotale == this.numPostiPrenotati) {
+			throw new NumeroPostiException("posti esauriti!");
+		} else {
+			this.numPostiPrenotati++;
+		}
+	}
+	
+	public void disdici() throws DataPassataException, NumeroPostiException {
+		if(this.data.isBefore(LocalDate.now())) {
+			throw new DataPassataException("l'evento è già passato!");
+		} else if(this.numPostiPrenotati == 0) {
+			throw new NumeroPostiException("tutti i posti sono liberi!");
+		} else {
+			this.numPostiPrenotati--;
+		}
 	}
 	
 }
