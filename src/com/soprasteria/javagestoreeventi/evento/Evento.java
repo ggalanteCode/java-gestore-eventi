@@ -67,7 +67,7 @@ public class Evento {
 		if(this.data.isBefore(LocalDate.now())) {
 			throw new DataPassataException("l'evento è già passato!");
 		} else if(this.numPostiPrenotati == 0) {
-			throw new NumeroPostiException("tutti i posti sono liberi!");
+			throw new NumeroPostiException("non puoi disdire più posti di quelli che hai prenotato!");
 		} else {
 			this.numPostiPrenotati--;
 		}
