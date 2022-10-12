@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -65,9 +64,8 @@ public class ProgrammEventi {
 		file.createNewFile();
 		FileWriter fw = new FileWriter(nomeFile);
 		fw.write("Titolo: " + titolo);
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		for(Evento e: eventi) {
-			fw.write("Data: " + e.getData().format(dtf) + " ");
+			fw.write("Data: " + e.formattaData() + " ");
 			fw.write("Posti Totali: " + e.getNumPostiTotale() + " ");
 			fw.write("Posti Prenotati: " + e.getNumPostiPrenotati() + "\n");
 		}
