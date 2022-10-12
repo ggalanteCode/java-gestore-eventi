@@ -28,5 +28,9 @@ public class ProgrammEventi {
 		}
 		return eventiInData;
 	}
+	
+	public int numeroEventi() {
+		return this.eventi.size();
+	}
 
 }
