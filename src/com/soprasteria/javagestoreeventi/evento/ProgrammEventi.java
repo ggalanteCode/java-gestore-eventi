@@ -32,5 +32,9 @@ public class ProgrammEventi {
 	public int numeroEventi() {
 		return this.eventi.size();
 	}
+	
+	public void svuotaListaEventi() {
+		this.eventi.clear();
+	}
 
 }
