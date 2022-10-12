@@ -6,7 +6,7 @@ import java.time.format.DateTimeFormatter;
 import com.soprasteria.javagestoreeventi.exceptions.DataPassataException;
 import com.soprasteria.javagestoreeventi.exceptions.NumeroPostiException;
 
-public class Evento {
+public class Evento implements Comparable<Evento> {
 	
 	private String titolo;
 	private LocalDate data;
@@ -80,7 +80,19 @@ public class Evento {
 
 	@Override
 	public String toString() {
-		return "Titolo evento: " + getTitolo() + ", data: " + formattaData();
+		return "Data: " + formattaData() + "Titolo evento: " + getTitolo(); 
+	}
+
+	@Override
+	public int compareTo(Evento o) {
+		// TODO Auto-generated method stub
+		if(this.getData().isBefore(o.getData())) {
+			return -1;
+		} else if(this.getData().isAfter(o.getData())) {
+			return 1;
+		} else {
+			return 0;
+		}
 	}
 
 	
