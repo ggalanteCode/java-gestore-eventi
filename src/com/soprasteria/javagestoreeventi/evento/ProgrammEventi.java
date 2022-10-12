@@ -59,10 +59,8 @@ public class ProgrammEventi {
 	}
 	
 	public void salva(String percorsoFile) throws IOException {
-		String nomeFile = "programma-eventi.txt";
-		File file = new File(nomeFile);
-		file.createNewFile();
-		FileWriter fw = new FileWriter(nomeFile);
+		File file = new File(percorsoFile);
+		FileWriter fw = new FileWriter(file);
 		fw.write("Titolo: " + titolo);
 		for(Evento e: eventi) {
 			fw.write("Data: " + e.formattaData() + " ");

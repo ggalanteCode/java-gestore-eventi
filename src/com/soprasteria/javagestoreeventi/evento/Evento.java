@@ -73,7 +73,7 @@ public class Evento implements Comparable<Evento> {
 		}
 	}
 	
-	String formattaData() {
+	public String formattaData() {
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		return getData().format(dtf);
 	}
